@@ -1,12 +1,11 @@
 {
-  "name": "typescript-lib-boilerplate",
+  "name": "ts-object",
   "version": "1.0.0",
-  "description": "",
+  "description":
+    "Utility methods for working with plain js objects in TypeScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
@@ -16,18 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/wand3r/typescript-lib-boilerplate.git"
+    "url": "http://github.com/wand3r/ts-object.git"
   },
-  "homepage": "https://github.com/wand3r/typescript-lib-boilerplate#readme",
+  "homepage": "https://github.com/wand3r/ts-object#readme",
   "bugs": {
-    "url": "https://github.com/wand3r/typescript-lib-boilerplate/issues"
+    "url": "https://github.com/wand3r/ts-object/issues"
   },
-  "keywords": [
-    "typescript"
-  ],
-  "tags": [
-    "typescript"
-  ],
+  "keywords": ["typescript"],
+  "tags": ["typescript"],
   "author": "Wojciech Karaś <wkaras89@gmail.com>",
   "license": "ISC",
   "devDependencies": {

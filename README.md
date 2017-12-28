@@ -1,1 +1,1 @@
-Template project for writing Node.js module in TypeScript and publish it on NPM.
+Utility methods for working with plain js objects in TypeScript just like with arrays.
