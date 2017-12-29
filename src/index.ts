@@ -1,54 +1,8 @@
+import { curry2, curry3 } from "./curry"
+
 type Transform<V, K, R> = (value: V, key: K) => R
 type Predicate<V, K> = (value: V, key: K) => boolean
 type Reducer<Acc, V, K> = (acc: Acc, value: V, key: K) => Acc
-
-type Arity2<A, B, C> = (a: A, b: B) => C
-type Curried2<A, B, C> = {
-  (a: A, b: B): C
-  (a: A): (b: B) => C
-}
-const curry2: <A, B, C>(fn: Arity2<A, B, C>) => Curried2<A, B, C> = (fn) => {
-  const curried = (...args: any[]) => {
-    switch (args.length) {
-      case 2: {
-        const [a, b] = args
-        return fn(a, b)
-      }
-      case 1: {
-        const [a] = args
-        return (b: any) => fn(a, b)
-      }
-      default:
-        throw new Error("Wrong arity")
-    }
-  }
-  return curried as Curried2<any, any, any>
-}
-
-type Arity3<A, B, C, D> = (a: A, b: B, c: C) => D
-type Curried3<A, B, C, D> = {
-  (a: A, b: B, c: C): D
-  (a: A, b: B): (c: C) => D
-}
-const curry3: <A, B, C, D>(fn: Arity3<A, B, C, D>) => Curried3<A, B, C, D> = (
-  fn,
-) => {
-  const curried = (...args: any[]) => {
-    switch (args.length) {
-      case 3: {
-        const [a, b, c] = args
-        return fn(a, b, c)
-      }
-      case 2: {
-        const [a, b] = args
-        return (c: any) => fn(a, b, c)
-      }
-      default:
-        throw new Error("Wrong arity")
-    }
-  }
-  return curried as Curried3<any, any, any, any>
-}
 
 type Map = {
   <O, R, K extends keyof O = keyof O>(map: Transform<O[K], K, R>, obj: O): {

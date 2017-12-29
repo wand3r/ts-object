@@ -1,4 +1,5 @@
 Utility methods for working with plain js objects in TypeScript just like with arrays.
+
 All functions can be used in two ways:
 
 * By passing all parameters, then TypeScript can correctly detect all types
