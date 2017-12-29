@@ -7,12 +7,12 @@ describe("map", () => {
     c: 3,
   }
   it("with arity 2", () => {
-    const mappedObj = map((x, key) => (key === "b" ? x * 3 : x * 2), obj)
+    const mappedObj = map((v, k) => (k === "b" ? v * 3 : v * 2), obj)
     expect(mappedObj).toEqual({ a: 2, b: 6, c: 6 })
   })
   it("with arity 1", () => {
     const mappedObj = map<typeof obj, number>(
-      (x, key) => (key === "b" ? x * 3 : x * 2),
+      (v, k) => (k === "b" ? v * 3 : v * 2),
     )(obj)
     expect(mappedObj).toEqual({ a: 2, b: 6, c: 6 })
   })
