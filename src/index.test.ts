@@ -86,12 +86,12 @@ describe("every", () => {
     c: 3,
   }
   it("with arity 2", () => {
-    expect(every((v, k) => v > 0, obj)).toBeTruthy()
-    expect(every((v, k) => v > 1, obj)).toBeFalsy()
+    expect(every((v, _k) => v > 0, obj)).toBeTruthy()
+    expect(every((v, _k) => v > 1, obj)).toBeFalsy()
   })
   it("with arity 1", () => {
-    expect(every<typeof obj>((v, k) => v > 0)(obj)).toBeTruthy()
-    expect(every<typeof obj>((v, k) => v > 1)(obj)).toBeFalsy()
+    expect(every<typeof obj>((v, _k) => v > 0)(obj)).toBeTruthy()
+    expect(every<typeof obj>((v, _k) => v > 1)(obj)).toBeFalsy()
   })
 })
 
