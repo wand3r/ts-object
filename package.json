@@ -1,6 +1,6 @@
 {
   "name": "ts-object",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description":
     "Utility methods for working with plain js objects in TypeScript",
   "main": "dist/index.js",
@@ -32,5 +32,7 @@
     "ts-jest": "^22.0.0",
     "typescript": "^2.6.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "ts-function": "^0.1.1"
+  }
 }

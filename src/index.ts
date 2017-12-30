@@ -1,4 +1,4 @@
-import { curry2, curry3 } from "./curry"
+import { curry2Last, curry3Last } from "ts-function"
 
 type Transform<V, K, R> = (value: V, key: K) => R
 type Predicate<V, K> = (value: V, key: K) => boolean
@@ -12,7 +12,7 @@ type Map = {
     obj: O,
   ) => Record<K, R>
 }
-export const map = curry2(
+export const map = curry2Last(
   <O, R, K extends keyof O = keyof O>(
     transform: Transform<O[K], K, R>,
     obj: O,
@@ -35,7 +35,7 @@ type Filter = {
     obj: O,
   ) => Partial<O>
 }
-export const filter = curry2(
+export const filter = curry2Last(
   <O, K extends keyof O>(predicate: Predicate<O[K], K>, obj: O): Partial<O> => {
     return Object.keys(obj).reduce(
       (filteredObj, key: K) => {
@@ -57,7 +57,7 @@ type Reduce = {
     obj: O,
   ) => Acc
 }
-export const reduce = curry3(
+export const reduce = curry3Last(
   <O, Acc, K extends keyof O = keyof O>(
     fn: Reducer<Acc, O[K], K>,
     init: Acc,
@@ -75,14 +75,14 @@ type Obj2Boolean = {
     obj: O,
   ) => boolean
 }
-export const some = curry2(
+export const some = curry2Last(
   <O, K extends keyof O = keyof O>(
     predicate: Predicate<O[K], K>,
     obj: O,
   ): boolean => Object.keys(obj).some((key: K) => predicate(obj[key], key)),
 ) as Obj2Boolean
 
-export const every = curry2(
+export const every = curry2Last(
   <O, K extends keyof O = keyof O>(
     predicate: Predicate<O[K], K>,
     obj: O,
@@ -95,7 +95,7 @@ type MapToArray = {
     obj: O,
   ) => R[]
 }
-export const mapToArray = curry2(
+export const mapToArray = curry2Last(
   <O, R, K extends keyof O = keyof O>(
     pick: Transform<O[K], K, R>,
     obj: O,
