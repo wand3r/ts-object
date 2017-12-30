@@ -1,4 +1,13 @@
-import { map, filter, reduce, some, every, mapToArray } from "./index"
+import {
+  map,
+  filter,
+  reduce,
+  some,
+  every,
+  mapToArray,
+  keys,
+  values,
+} from "./index"
 
 describe("map", () => {
   const obj = {
@@ -113,4 +122,22 @@ describe("mapToArray", () => {
     }))(obj)
     expect(arr).toEqual(result)
   })
+})
+
+test("keys", () => {
+  const obj = {
+    a: 1,
+    b: 2,
+    c: 3,
+  }
+  expect(keys(obj)).toEqual(["a", "b", "c"])
+})
+
+test("values", () => {
+  const obj = {
+    a: 1,
+    b: 2,
+    c: 3,
+  }
+  expect(values(obj)).toEqual([1, 2, 3])
 })

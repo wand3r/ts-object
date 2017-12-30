@@ -101,7 +101,15 @@ export const mapToArray = curry2Last(
     obj: O,
   ): R[] =>
     Object.keys(obj).reduce(
-      (arr, key: K) => [...arr, pick(obj[key], key)],
+      (arr, key: K) => {
+        arr.push(pick(obj[key], key))
+        return arr
+      },
       [] as R[],
     ),
 ) as MapToArray
+
+export const keys = <O>(obj: O) => Object.keys(obj) as Array<keyof O>
+
+export const values = <T>(obj: { [key: string]: T }): T[] =>
+  mapToArray((v) => v, obj)
