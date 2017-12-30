@@ -14,7 +14,16 @@ npm i ts-object
 ## Usage
 
 ```typescript
-import { map, filter, reduce, some, every, mapToArray } from "ts-object"
+import {
+  map,
+  filter,
+  reduce,
+  some,
+  every,
+  mapToArray,
+  keys,
+  values,
+} from "ts-object"
 
 const obj = {
   a: 1,
@@ -54,4 +63,7 @@ const arr = mapToArray<typeof obj, { k: string; v: number }>((v, k) => ({
   v,
   k,
 }))(obj)
+
+const keys = keys(obj)
+const values = values(obj)
 ```
