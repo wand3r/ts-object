@@ -66,4 +66,9 @@ const arr = mapToArray<typeof obj, { k: string; v: number }>((v, k) => ({
 
 const keys = keys(obj)
 const values = values(obj)
+
+const arr = [{ v: 1, k: "a" }, { v: 2, k: "b" }, { v: 3, k: "c" }]
+
+const obj = fromArray((x) => x.k, (x) => x.v, arr)
+const obj = fromArray<typeof arr[0], number>((x) => x.k, (x) => x.v)(arr)
 ```

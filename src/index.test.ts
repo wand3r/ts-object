@@ -7,6 +7,7 @@ import {
   mapToArray,
   keys,
   values,
+  fromArray,
 } from "./index"
 
 describe("map", () => {
@@ -121,6 +122,23 @@ describe("mapToArray", () => {
       k,
     }))(obj)
     expect(arr).toEqual(result)
+  })
+})
+
+describe("fromArray", () => {
+  const arr = [{ v: 1, k: "a" }, { v: 2, k: "b" }, { v: 3, k: "c" }]
+  const expected = {
+    a: 1,
+    b: 2,
+    c: 3,
+  }
+  it("with arity 3", () => {
+    const obj = fromArray((x) => x.k, (x) => x.v, arr)
+    expect(obj).toEqual(expected)
+  })
+  it("with arity 2", () => {
+    const obj = fromArray<typeof arr[0], number>((x) => x.k, (x) => x.v)(arr)
+    expect(obj).toEqual(expected)
   })
 })
 

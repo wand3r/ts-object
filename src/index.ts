@@ -109,6 +109,29 @@ export const mapToArray = curry2Last(
     ),
 ) as MapToArray
 
+type FromArray = {
+  <T, Value>(key: (x: T) => string, value: (x: T) => Value, arr: T[]): {
+    [key: string]: Value
+  }
+  <T, Value>(key: (x: T) => string, value: (x: T) => Value): (
+    arr: T[],
+  ) => { [key: string]: Value }
+}
+export const fromArray = curry3Last(
+  <T, Value>(
+    key: (x: T) => string,
+    value: (x: T) => Value,
+    arr: T[],
+  ): { [key: string]: Value } =>
+    arr.reduce(
+      (acc, x) => {
+        acc[key(x)] = value(x)
+        return acc
+      },
+      {} as { [key: string]: Value },
+    ),
+) as FromArray
+
 export const keys = <O>(obj: O) => Object.keys(obj) as Array<keyof O>
 
 export const values = <T>(obj: { [key: string]: T }): T[] =>
